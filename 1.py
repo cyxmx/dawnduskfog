@@ -1,5 +1,4 @@
 import numpy as np
-import math
 import xarray as xr
 from numpy import deg2rad, rad2deg, arctan, arcsin, tan, sqrt, cos, sin
 import datetime
