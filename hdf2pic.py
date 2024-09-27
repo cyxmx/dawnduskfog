@@ -251,10 +251,10 @@ if __name__ == "__main__":
     
     region = [28.7, 41.5, 116.2, 129.0, 0.0125]
     
-    paths = [x for x in os.listdir('./FY4B/') if x.split('.')[-1]=='hdf' or x.split('.')[-1]=='HDF']
+    paths = [x for x in os.listdir('./data-fog/') if x.split('.')[-1]=='hdf' or x.split('.')[-1]=='HDF']
     paths = [x for x in paths if x[:4]=='FY4B']
     for path in paths:
-        pathdir = './FY4B/' + path
+        pathdir = './data-fog/' + path
         print(pathdir)
         datetime = rec_datetime(path)
         print(datetime)
@@ -262,9 +262,9 @@ if __name__ == "__main__":
             npy = hdf2np(pathdir, region)
             # print(npy.dtype)
             print(npy.shape)
-            np.save('./FY4B/FY4B_'+datetime+'.npy', npy)
+            np.save('./data-fog/FY4B_'+datetime+'.npy', npy)
             nc = make_nc_RGB(npy)
             rgb = make_RGB(npy)
             
-            cv2.imwrite('./FY4B/FY4B_'+ 'RGB_' +datetime+".png", rgb)
-            cv2.imwrite('./FY4B/FY4B_'+ 'NC_' +datetime+".png", nc)
+            cv2.imwrite('./data-fog/FY4B_'+ 'RGB_' +datetime+".png", rgb)
+            cv2.imwrite('./data-fog/FY4B_'+ 'NC_' +datetime+".png", nc)
